@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Halaman Category</h1>
+    <table border="1px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME CATEGORY</th>
+          <th>CREATED AT</th>
+          <th>UPDATED AT</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dtCategory.forEach( row => { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.nameCategory %></td>
+          <td><%= row.createdAt %></td>
+          <td><%= row.updatedAt %></td>
+          <td>
+            <a href="/category/edit/<%= row.id %>"><button>Edit</button></a>
+            <a href="/category/delete/<%= row.id %>"><button>Hapus</button></a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </br>
+    <div>
+      <a href="/category/addCategory">Add Category</a>
+      <a href = "/" style="color:black">Back To Home</a>
+    </div>
+
+  </body>
+</html>
