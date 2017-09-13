@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/berita/edit/<%= dtBerita.id %>" method="post">
+      <input type="text" name="judulBerita" value="<%= dtBerita.judulBerita %>">
+      <textarea name="isiBerita" rows="8" cols="80" value="<%= dtBerita.isiBerita %>">
+
+      </textarea>
+      <input type="text" name="gambar" value="<%= dtBerita.gambar %>">
+      <button type="submit" name="submit">Tambah</button>
+    </form>
+  </body>
+</html>
