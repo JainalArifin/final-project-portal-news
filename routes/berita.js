@@ -3,10 +3,20 @@ const router = express.Router()
 const  Model = require('../models')
 
 router.get('/', (req, res)=>{
-  Model.Berita.findAll()
+  Model.Berita.findAll({
+    order: [['id', 'DESC']],
+    include: [Model.Category]
+  })
   .then((dataBerita) => {
+
+    Model.Category.findAll()
+    .then((dataCategory) => {
+      console.log(dataBerita, '<---------');
+      res.render('berita', {dtBerita:dataBerita, dtCategory:dataCategory})
+    })
     // res.send(dataBerita)
-    res.render('berita', {dtBerita:dataBerita})
+    // console.log(dataBerita, '<---- ini data berita');
+    // res.render('berita', {dtBerita:dataBerita})
   })
   .catch((err) => {
     console.log(err);

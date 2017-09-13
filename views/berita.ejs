@@ -11,6 +11,13 @@
 
       </textarea>
       <input type="text" name="gambar" placeholder="gambar">
+      <select name="CategoryId">
+        <!-- <% if(dtBerita.CategoryId == null){%> -->
+          <% dtCategory.forEach(data=>{%>
+            <option value="<%= data.id %>"><%= data.nameCategory %></option>
+          <% }) %>
+        <!-- <%}%> -->
+      </select>
       <button type="submit" name="submit">Tambah</button>
     </form>
     <br><br>
@@ -20,7 +27,8 @@
         <th>Judul berita</th>
         <th>Isi berita</th>
         <th>gambar</th>
-        <th>option</th>
+        <th>category</th>
+        <th colspan="2">option</th>
       </tr>
       <%  dtBerita.forEach(dataBerita=>{ %>
         <tr>
@@ -28,6 +36,7 @@
           <td><%= dataBerita.judulBerita %></td>
           <td><%= dataBerita.isiBerita %></td>
           <td><%= dataBerita.gambar %></td>
+          <td><%= dataBerita.CategoryId %></td>
           <td>
             <a href="/berita/edit/<%= dataBerita.id %>">Edit</a>
           </td>
