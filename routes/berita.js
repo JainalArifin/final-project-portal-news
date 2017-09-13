@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const  Model = require('../models')
+const multer = require('multer');
+const upload = multer({ dest: 'public/images/' })
 
 router.get('/', (req, res)=>{
   Model.Berita.findAll()
@@ -13,11 +15,11 @@ router.get('/', (req, res)=>{
   })
 })
 
-router.post('/', (req, res)=>{
+router.post('/', upload.any(), (req, res)=>{
   Model.Berita.create({
     judulBerita: `${req.body.judulBerita}`,
     isiBerita: `${req.body.isiBerita}`,
-    gambar: `${req.body.gambar}`
+    gambar: `${req.files[0].filename}`
   })
   .then(() => {
     res.redirect('/berita')

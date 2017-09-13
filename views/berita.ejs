@@ -5,12 +5,12 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="/berita" method="post">
+    <form class="" action="/berita" method="post" enctype="multipart/form-data">
       <input type="text" name="judulBerita" placeholder=" JUDUL BERITA">
       <textarea name="isiBerita" rows="8" cols="80">
-
       </textarea>
-      <input type="text" name="gambar" placeholder="gambar">
+      <input type="file" name="gambar" placeholder="gambar">
+      <!-- multiple -->
       <button type="submit" name="submit">Tambah</button>
     </form>
     <br><br>
@@ -20,14 +20,14 @@
         <th>Judul berita</th>
         <th>Isi berita</th>
         <th>gambar</th>
-        <th>option</th>
+        <th colspan="2">option</th>
       </tr>
       <%  dtBerita.forEach(dataBerita=>{ %>
         <tr>
           <td><%= dataBerita.id %></td>
           <td><%= dataBerita.judulBerita %></td>
           <td><%= dataBerita.isiBerita %></td>
-          <td><%= dataBerita.gambar %></td>
+          <td><img src="/images/<%= dataBerita.gambar %>" /></td>
           <td>
             <a href="/berita/edit/<%= dataBerita.id %>">Edit</a>
           </td>
