@@ -5,10 +5,9 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="/berita" method="post">
+    <form class="" action="/berita" method="post" enctype="multipart/form-data">
       <input type="text" name="judulBerita" placeholder=" JUDUL BERITA">
       <textarea name="isiBerita" rows="8" cols="80">
-
       </textarea>
       <input type="text" name="gambar" placeholder="gambar">
       <select name="CategoryId">
@@ -18,6 +17,7 @@
           <% }) %>
         <!-- <%}%> -->
       </select>
+      <input type="file" name="gambar" placeholder="gambar">
       <button type="submit" name="submit">Tambah</button>
     </form>
     <br><br>
@@ -37,6 +37,7 @@
           <td><%= dataBerita.isiBerita %></td>
           <td><%= dataBerita.gambar %></td>
           <td><%= dataBerita.CategoryId %></td>
+          <td><img src="/images/<%= dataBerita.gambar %>" /></td>
           <td>
             <a href="/berita/edit/<%= dataBerita.id %>">Edit</a>
           </td>
