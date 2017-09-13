@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/berita" method="post">
+      <input type="text" name="judulBerita" placeholder=" JUDUL BERITA">
+      <textarea name="isiBerita" rows="8" cols="80">
+
+      </textarea>
+      <input type="text" name="gambar" placeholder="gambar">
+      <button type="submit" name="submit">Tambah</button>
+    </form>
+    <br><br>
+    <table border="2">
+      <tr>
+        <th>ID</th>
+        <th>Judul berita</th>
+        <th>Isi berita</th>
+        <th>gambar</th>
+        <th>option</th>
+      </tr>
+      <%  dtBerita.forEach(dataBerita=>{ %>
+        <tr>
+          <td><%= dataBerita.id %></td>
+          <td><%= dataBerita.judulBerita %></td>
+          <td><%= dataBerita.isiBerita %></td>
+          <td><%= dataBerita.gambar %></td>
+          <td>
+            <a href="/berita/edit/<%= dataBerita.id %>">Edit</a>
+          </td>
+          <td>
+            <a href="/berita/delete/<%= dataBerita.id %>">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>

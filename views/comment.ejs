@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/comment/add">add comment</a>
+    <table border="2">
+      <tr>
+        <th>ID</th>
+        <th>USERNAME</th>
+        <th>EMAIL</th>
+        <th>KOMENTAR</th>
+      </tr>
+      <% dtComment.forEach(dataComment=>{ %>
+      <tr>
+        <td><%= dataComment.id %></td>
+        <td><%= dataComment.fusername %></td>
+        <td><%= dataComment.email %></td>
+        <td><%= dataComment.komentar %></td>
+        <td>
+          <a href="/comment/approve/<%= dataComment.id %>">approve</a>
+        </td>
+        <td>
+          <a href="/comment/delete/<%= dataComment.id %>"> Delete </a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
