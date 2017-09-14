@@ -4,8 +4,11 @@ const Model = require('../models');
 
 // READ DATA TABLE FROM CATEGORIES
 router.get('/', function(req,res) {
-  Model.Category.findAll()
+  Model.Category.findAll({
+    include:[Model.Berita]
+  })
   .then(dataCategory => {
+    console.log(dataCategory, '<--------');
     res.render('category', {dtCategory: dataCategory})
     //res.send(dataCategory)
   })

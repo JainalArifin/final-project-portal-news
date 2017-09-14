@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Portal Berita Monkey Chimps</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+    <%- include partial/menu-bar %>
+    </div>
+
+
+<div class="container div-content">
+  <div class="row">
+    <!-- news section -->
+
+      <div class="col-md-8">
+          <% dtSearch.forEach(dataBerita => { %>
+        <div class="row div-single-articles">
+          <div class="col-md-4">
+            <img src="/images/<%= dataBerita.gambar %>" class="img-responsive">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-10 col-sm-10 col-xs-8">
+                <h3 class="title-article"><a href="/blog/detail/<%= dataBerita.id %>"><%= dataBerita.judulBerita %></a></h3>
+                <p class="comment-article2"><span class="glyphicon glyphicon-comment"></span> 100 <span class="glyphicon glyphicon-folder-open"></span> <a href="#">design</a>, <a href="#">inspiration</a> <span class="glyphicon glyphicon-tag"></span> <a href="#">house design</a>, <a href="#">art</a> <span class="glyphicon glyphicon-user"> </span>by <a href="#">Sofyan</a></p>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="date-article">
+                  <% let date = dataBerita.createdAt %>
+                  <% let conver = date.toString().split(' ') %>
+                  <%=  conver[2]+'\n' + conver[1]  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row content-article2">
+              <div class="col-md-12">
+                <p><%= dataBerita.isiBerita %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <a href="/blog/detail/<%= dataBerita.id %>" class="read-more">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+<% }) %>
+      <!-- <ul class="nav nav-pills nav-justified thumbnail prevnext">
+        <li>
+            <a href="#">
+                <h4 class="list-group-item-heading">Older</h4>
+                <p class="list-group-item-text">Our Older Articles</p>
+            </a>
+        </li>
+        <li class="active">
+            <a href="#">
+                <h4 class="list-group-item-heading">Newest</h4>
+                <p class="list-group-item-text">Our Newest Articles</p>
+            </a>
+        </li>
+    </ul> -->
+
+    </div>
+
+    <!-- end news section -->
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="widget-sidebar">
+        <aside>
+            <h3 class="widget-title">Recent Posts</h3>
+            <% berita.forEach(dataBerita=> { %>
+              <ul>
+                  <li>
+                      <a href="/blog/detail/<%= dataBerita.id %>"><%= dataBerita.judulBerita %></a>
+                  </li>
+              </ul>
+            <% }) %>
+        </aside>
+        <aside>
+            <h3 class="widget-title">Recent Comments</h3>
+            <ul>
+                <li><span>admin</span> on <a href="#">Post 2</a>
+                </li>
+                <li><span><a href="#">Test</a></span> on <a href="#">Hello world!</a>
+                </li>
+            </ul>
+        </aside>
+        <aside>
+            <h3 class="widget-title">Categories</h3>
+            <% category.forEach(dataCategory => { %>
+              <ul>
+                  <li><a href="<%= dataCategory.id %>"><%= dataCategory.nameCategory %></a>
+                  </li>
+              </ul>
+            <% }) %>
+        </aside>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%- include partial/footer %>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

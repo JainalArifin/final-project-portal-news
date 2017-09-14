@@ -1,0 +1,12 @@
+img {
+    width: 100px;
+    height: 100px;
+}
+.tampung {
+    width: 900px;
+    margin: auto;
+    border: 8px outset;
+    padding: 39px;
+    margin: 25px;
+    box-shadow: 2px 2px 2px 7px;
+}
