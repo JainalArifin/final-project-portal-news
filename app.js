@@ -4,12 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var comment = require('./routes/comment')
 var berita = require('./routes/berita');
 var category = require('./routes/category');
+var login = require('./routes/login')
 var admin = require('./routes/admin')
 
 var app = express();
@@ -17,6 +19,13 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({
+  secret: 'warung-coding',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {}
+}))
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,6 +40,7 @@ app.use('/users', users);
 app.use('/category', category)
 app.use('/comment', comment)
 app.use('/berita', berita)
+app.use('/login', login)
 app.use('/admin', admin)
 
 // catch 404 and forward to error handler

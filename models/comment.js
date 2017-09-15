@@ -4,12 +4,13 @@ module.exports = function(sequelize, DataTypes) {
     fusername: DataTypes.STRING,
     email: DataTypes.STRING,
     komentar: DataTypes.TEXT
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
+  Comment.associate = (models) =>{
+    Comment.belongsToMany(models.Berita, {
+      through: 'beritaComment'
+    })
+    Comment.hasMany(models.beritaComment)
+  }
   return Comment;
 };

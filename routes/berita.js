@@ -4,6 +4,14 @@ const  Model = require('../models')
 const multer = require('multer');
 const upload = multer({ dest: 'public/images/' })
 
+router.use((req, res, next)=>{
+  if(req.session.role === 'superAdmin' || req.session.role === 'admin'){
+    next()
+  }else {
+    res.redirect('/login')
+  }
+})
+
 router.get('/', (req, res)=>{
   Model.Berita.findAll({
     order: [['id', 'DESC']],

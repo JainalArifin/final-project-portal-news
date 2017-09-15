@@ -37,4 +37,14 @@ router.get('/delete/:id', (req, res)=>{
   })
 })
 
+router.get('/:id/berita', (req, res)=>{
+  Model.Comment.findById(req.params.id)
+  .then((dataStudent) => {
+    Model.Berita.findAll()
+    .then((dataBerita) => {
+
+    })
+  })
+})
+
 module.exports = router

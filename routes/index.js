@@ -7,9 +7,27 @@ var Model = require('../models')
 //   res.render('editors', { title: 'Express' });
 // });
 
+// router.get('/', (req, res)=>{
+//   Model.Berita.findAll({
+//     limit: 3,
+//     order:[['id', 'DESC']],
+//     include: [Model.Category]
+//   })
+//   .then((dataBerita) => {
+//     // res.send(dataBerita)
+//     Model.Category.findAll({
+//       include: [Model.Berita]
+//     })
+//     .then((dataCategory) => {
+//       // console.log(dataCategory[0].id, '<------ test');
+//       res.render('interface', {dtBerita:dataBerita, dtCategory:dataCategory})
+//     })
+//   })
+// })
+
 router.get('/', (req, res)=>{
   Model.Berita.findAll({
-    limit: 3,
+    limit: 6,
     order:[['id', 'DESC']],
     include: [Model.Category]
   })
@@ -19,11 +37,14 @@ router.get('/', (req, res)=>{
       include: [Model.Berita]
     })
     .then((dataCategory) => {
-      // console.log(dataCategory[0].id, '<------ test');
-      res.render('interface', {dtBerita:dataBerita, dtCategory:dataCategory})
+
+      // console.log(dataBerita, '<------ test');
+      // res.send(dataBerita[0])
+      res.render('home', {dtBerita:dataBerita, dtCategory:dataCategory})
     })
   })
 })
+
 
 router.get('/interface/:id', function(req,res) {
   Model.Category.findAll({
@@ -81,7 +102,7 @@ router.get('/blog', (req,res) => {
           order: [['id', 'DESC']]
         })
         .then((berita)=> {
-          res.render('newsSearch', {dtBerita: dataBerita, category: category,berita: berita})
+          res.render('blog', {dtBerita: dataBerita, category: category,berita: berita})
         })
       })
     })
@@ -106,7 +127,7 @@ router.get('/blog', (req,res) => {
       .then((dataCategory) => {
       Model.Berita.findAll()
       .then(dataBerita => {
-        res.render('searchResult', {dtSearch:data, category: dataCategory,berita: dataBerita})
+        res.render('searchBlog', {dtBerita:data, category: dataCategory,berita: dataBerita})
       })
       })
       // res.send(data)

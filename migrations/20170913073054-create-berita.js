@@ -11,9 +11,6 @@ module.exports = {
       judulBerita: {
         type: Sequelize.STRING
       },
-      isiBerita: {
-        type: Sequelize.STRING
-      },
       gambar: {
         type: Sequelize.TEXT
       },

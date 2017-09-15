@@ -10,16 +10,18 @@
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/custom.css">
-
+    <link rel="stylesheet" href="/css/background-admind.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <%- include partial/background-admin %>
+
   </head>
   <body>
-    <div class="container">
+    <div class="container image-admin">
       <div class="row">
         <%- include partial/menu-link %>
         <div class="tampung">
@@ -61,10 +63,10 @@
               <td><img src="/images/<%= dataBerita.gambar %>"/></td>
               <td><%= dataBerita.Category.nameCategory %></td>
               <td>
-                <a href="/berita/edit/<%= dataBerita.id %>">Edit</a>
+                <a href="/berita/edit/<%= dataBerita.id %>"><button class="btn btn-primary glyphicon glyphicon-pencil"> Edit</button></a>
               </td>
               <td>
-                <a href="/berita/delete/<%= dataBerita.id %>">Delete</a>
+                <a href="/berita/delete/<%= dataBerita.id %>"><button class="btn btn-primary glyphicon glyphicon-remove"> Hapus</button></a>
               </td>
             </tr>
           <% }) %>
