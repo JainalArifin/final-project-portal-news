@@ -9,7 +9,12 @@ module.exports = function(sequelize, DataTypes) {
 
   Berita.associate = (models) =>{
     Berita.belongsTo(models.Category, {foreignKey: 'CategoryId'})
+    Berita.belongsToMany(models.Comment, {
+      through: 'beritaComment'
+    })
+    Berita.hasMany(models.beritaComment)
   }
+
   return Berita;
 };
 // Teacher.associate = function(models) {

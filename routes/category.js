@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Model = require('../models');
 
+
+router.use((req, res, next)=>{
+  if(req.session.role === 'superAdmin' || req.session.role === 'admin'){
+    next()
+  }else {
+    res.redirect('/login')
+  }
+})
+
 // READ DATA TABLE FROM CATEGORIES
 router.get('/', function(req,res) {
   Model.Category.findAll({
